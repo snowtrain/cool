@@ -1,5 +1,6 @@
 from pyVmomi import vim
 from pyVim.connect import SmartConnect, SmartConnectNoSSL, Disconnect
+from cool.modules.vSphere.vsphere_0_login_info import vcip,username,password
 import atexit
 
 
@@ -58,8 +59,7 @@ def clone_vm(
     if datastore_name:
         datastore = get_obj(content, [vim.Datastore], datastore_name)
     else:
-        datastore = get_obj(
-            content, [vim.Datastore], template.datastore[0].info.name)
+        datastore = get_obj(content, [vim.Datastore], template.datastore[0].info.name)
 
     # if None, get the first one
     cluster = get_obj(content, [vim.ClusterComputeResource], cluster_name)
@@ -113,11 +113,13 @@ def clone_vm(
 def clone_vm_from_no(vm_no, temp_no):
     # 登录vCenter
     si = SmartConnectNoSSL(
-         host='192.168.0.101',
-         user='administrator@vsphere.local',
-         pwd='YUting@123',
-         port=443)
+         host = vcip,
+         user = username,
+         pwd = password,
+         port =443)
 
+# atexit模块的主要作用是在程序即将结束之间执行的代码。register函数用于注册程序退出时的回调函数。
+# 如果出现异常则调用Disconnect方法断开连接
     atexit.register(Disconnect, si)
     content = si.RetrieveContent()
     template = None

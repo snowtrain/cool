@@ -3,12 +3,16 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 from requests.auth import HTTPBasicAuth
 
+# ESXI IP地址/用户名/密码
+esxi_ip = '192.168.3.110'
+esxi_username = 'root'
+esxi_password = 'YUting@123'
 
-# vCenter IP地址
-vcip = '192.168.0.101'
-# vCenter登录用户名和密码
+# vCenterIP地址/用户名/密码
+vcip = '192.168.3.101'
 username = 'administrator@vsphere.local'
 password = 'YUting@123'
+
 # vCenter登录并且获取Cookie的URL链接
 login_url = 'https://' + vcip + '/rest/com/vmware/cis/session'  # 请求的URL
 

@@ -23,7 +23,7 @@ def nexus_all_auto(vid):
     print('NXOS-3 vlan lists Befor: ' + str(nexus_get_vlan_lists(nxos3_ip)))
 
     # 开始在NXOS-1和NXOS-3上创建VLAN
-    print('Create Vlan \'' + vlanid + '\' on NXOS-1 adn NXOS-3')
+    print('Create Vlan \'' + vlanid + '\' on NXOS-1 and NXOS-3')
 
     # 在NXOS-1上创建VLAN
     add_vlan(vlanid, nxos1_ip)
@@ -35,7 +35,7 @@ def nexus_all_auto(vid):
     print('NXOS-3 vlan lists Now: ' + str(nexus_get_vlan_lists(nxos3_ip)))
 
     # 开始在NXOS-1和NXOS-3上创建和配置VXLAN
-    print('Create vxlan on NXOS-1 adn NXOS-3: ' + vxlanid)
+    print('Create vxlan on NXOS-1 and NXOS-3: ' + vxlanid)
     create_vxlan(vlanid, nxos1_ip)
     config_vxlan_nve(vlanid, nxos1_ip)
     create_vxlan(vlanid, nxos3_ip)

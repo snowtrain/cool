@@ -7,7 +7,7 @@ from cool.modules.vSphere.vsphere_8_all_auto import vsphere_all_auto
 
 
 def cloud_all_auto(cpu_cores, mem, vlanid):
-    # 根据客户输入的CPU和MEM配置,判断模板
+    # 根据输入的CPU和MEM配置,判断模板
     global temp_no
     if mem == 1 and cpu_cores == 1:
         temp_no = 1
